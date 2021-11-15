@@ -26,7 +26,7 @@ def film_in_category(category_id:int)->pd.DataFrame:
     pd.DataFrame: DataFrame zawierający wyniki zapytania
     '''
     if type(category_id) == int:
-        df = pd.read_sql("Select film.title, language.name, category.name from film " +
+        df = pd.read_sql("Select film.title title, language.name languge, category.name category from film " +
                          "INNER JOIN language ON film.language_id = language.language_id " +
                          "INNER JOIN film_category ON film.film_id = film_category.film_id " +
                          "INNER JOIN category ON film_category.category_id = category.category_id " +
@@ -52,28 +52,16 @@ def number_films_in_category(category_id:int)->pd.DataFrame:
     pd.DataFrame: DataFrame zawierający wyniki zapytania
     '''
     if type(category_id) == int:
-        df = pd.read_sql("SELECT category.name category, COUNT(category.name) FROM film_category " +
+        df = pd.read_sql("SELECT category.name category, COUNT(category.name) FROM film " +
+                         "INNER JOIN film_category ON film.film_id = film_category.film_id " + 
                          "INNER JOIN category ON film_category.category_id = category.category_id " +
-                         "WHERE category.category_id = '{x}' ".format(x=category_id) +
+                         "WHERE category.category_id = '{x}' ".format(x=category_id)+
                          "GROUP BY category.name", con=connection)
 
         return df
     else:
         return None
-'''
-if not isinstance(category_id, int):
-        return None
 
-    df= pd.read_sql(
-        'SELECT category.name category, COUNT(film_category.category_id) '
-        'FROM film_category fc '
-        'JOIN category c on c.category_id=fc.category_id '
-        'WHERE  c.category_id='+str(category_id)+
-        ' GROUP BY category',
-        con=connection
-    )
-    return df
-'''
 
 def number_film_by_length(min_length: Union[int,float] = 0, max_length: Union[int,float] = 1e6 ) :
     ''' Funkcja zwracająca wynik zapytania do bazy o ilość filmów o dla poszczegulnych długości pomiędzy wartościami min_length a max_length.
