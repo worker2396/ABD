@@ -1,0 +1,27 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('data1.csv')
+print(data)
+
+df = df.rename({'Unnamed: 0':'Date'}, axis = 1)
+
+df = df.set_index('Date')
+
+df.head()
+
+import seaborn as sb 
+
+sb.lineplot(x="Date", y="theta_1", data=df) 
+sb.lineplot(x="Date", y="theta_2", data=df)
+sb.lineplot(x="Date", y="theta_3", data=df) 
+sb.lineplot(x="Date", y="theta_4", data=df)
+sb.lineplot(x="Date", y="theta_5", data=df) 
+sb.lineplot(x="Date", y="theta_6", data=df)# set label 
+#plt.ylabel("Units Returned Unites Sold") 
+plt.show()
+
+for x in df.columns:
+    bins, counts = df.select(x).rdd.flatMap(lambda x: x).histogram(20)
+    plt.hist(bins[:-1], bins=bins, weights=counts)
+
