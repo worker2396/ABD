@@ -1,0 +1,5 @@
+Origindata directory contains raw table of data.
+Data directory contains a set of data, processed according to a TIER protocol.
+Docs directory contains a notebook file, representing actions taken to refactor data accordingly to a protocol.
+Analysis directory contains data appendix, including all variable represting charts, text file describing contains of project structure 
+and a written summary in a form of assumptions about product efficiency on given market.

@@ -1,0 +1,7 @@
+1. In averagei it took 7 days for customers to leave their review on a product.
+2. Rates of product are preety evenly diversified with a mean of 2.5 .
+3. Average age of customers is near 40 years old.
+4. Most of clients chose not to specify their sex.
+5. Most brands have around the same number of reviews except Samsung brand which has 3-4 times less feedback.
+6. All brands have quite similar rating of reviews.
+7. From information fiven the best to but product will be from Beko brand because of high popularity yet high mean rating.
